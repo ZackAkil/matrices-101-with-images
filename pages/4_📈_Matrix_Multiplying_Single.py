@@ -10,7 +10,7 @@ st.set_page_config(layout="wide")
 st.title("Matrix multiplier - single number")
 
 
-multiply = st.slider('Multiply by:', 0, 10, 1)
+
 
 
 cmap_option = st.selectbox(
@@ -18,13 +18,17 @@ cmap_option = st.selectbox(
 options=['Greys', 'viridis', 'plasma', 'inferno', 'magma', 'coolwarm', 'jet', 'cool']
 ) 
 
+colour_scale = st.slider('Colour Scale', 10, 100, 10)
+
+multiply = st.slider('Multiply by:', 0, 10, 1)
+
 viz = st.checkbox('Vizualise')
 
 col1, col2 = st.columns(2)
 
 def diplay_matrix(matrix):
     fig, ax = plt.subplots()
-    im = ax.imshow(matrix,  vmin=0, vmax=10, cmap=cmap_option)
+    im = ax.imshow(matrix,  vmin=0, vmax=colour_scale, cmap=cmap_option)
     fig.colorbar(im, ax=ax)
     st.pyplot(fig)
 

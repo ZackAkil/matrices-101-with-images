@@ -8,6 +8,11 @@ import matplotlib.pyplot as plt
 st.set_page_config(layout="wide")
 st.title("Matrix Adding")
 
+cmap_option = st.selectbox(
+"Colormap:", 
+options=['Greys', 'viridis', 'plasma', 'inferno', 'magma', 'coolwarm', 'jet', 'cool']
+) 
+
 col1, col2, col3 = st.columns(3)
 
 
@@ -15,7 +20,7 @@ def display_matrix(matrix):
     
 
     fig, ax = plt.subplots()
-    im = ax.imshow(matrix,  vmin=0, vmax=10, cmap='cool')
+    im = ax.imshow(matrix,  vmin=0, vmax=10, cmap=cmap_option)
     fig.colorbar(im, ax=ax)
     st.pyplot(fig)
 
